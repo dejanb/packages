@@ -148,6 +148,9 @@ messaging:
   certPath: /etc/hono/cert.pem
   trustStorePath: /etc/hono/trusted-certs.pem
   hostnameVerificationRequired: false
+  {{- if .dot.Values.adapters.addressRewriteRule }}
+  addressRewriteRule: {{ .dot.Values.adapters.addressRewriteRule }}
+  {{- end }}
 {{- else }}
   {{- required ".Values.adapters.amqpMessagingNetworkSpec MUST be set if example AQMP Messaging Network is disabled" .dot.Values.adapters.amqpMessagingNetworkSpec | toYaml | nindent 2 }}
 {{- end }}
@@ -161,6 +164,9 @@ command:
   certPath: /etc/hono/cert.pem
   trustStorePath: /etc/hono/trusted-certs.pem
   hostnameVerificationRequired: false
+  {{- if .dot.Values.adapters.addressRewriteRule }}
+  addressRewriteRule: {{ .dot.Values.adapters.addressRewriteRule }}
+  {{- end }}
 {{- else }}
   {{- required ".Values.adapters.commandAndControlSpec MUST be set if example AQMP Messaging Network is disabled" .dot.Values.adapters.commandAndControlSpec | toYaml | nindent 2 }}
 {{- end }}

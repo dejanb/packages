@@ -1,0 +1,6 @@
+amqpMessagingNetworkExample:
+  router:
+    configFile: "config/router/qdrouterd-multitenant.json"
+
+adapters:
+  addressRewriteRule: "([a-z_]+)/([\\w-]+) test-vhost/$1/$2"
